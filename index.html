@@ -1,161 +1,148 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8"/>
+<meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Admin Panel — Firstlyo Portfolio</title>
-<link rel="stylesheet" href="style.css"/>
+<title>Firstlyo Eilen Rizqulloh — Portfolio 2026</title>
+<link rel="stylesheet" href="style.css" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 </head>
-<body class="admin-body">
+<body>
 
-<!-- LOGIN SCREEN -->
-<div id="loginScreen" class="login-screen">
-  <div class="login-card">
-    <div class="logo"><span class="logo-dot"></span> Admin Panel</div>
-    <h2>Welcome back ✦</h2>
-    <p class="hint">Default password: <code>admin123</code></p>
-    <input type="password" id="loginPass" placeholder="Enter password" />
-    <button class="btn btn-primary" onclick="doLogin()">Login →</button>
-    <a href="index.html" class="back-link">← Back to site</a>
+<!-- Aurora Background -->
+<div class="aurora"></div>
+<div class="noise"></div>
+
+<!-- Custom Cursor -->
+<div class="cursor"></div>
+<div class="cursor-follow"></div>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="logo">
+    <span class="logo-dot"></span>
+    <span>Firstlyo.</span>
   </div>
-</div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#works">Works</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="admin.html" class="btn-admin">⚙ Admin</a>
+</nav>
 
-<!-- DASHBOARD -->
-<div id="dashboard" class="dashboard" style="display:none;">
-  <aside class="sidebar">
-    <div class="logo"><span class="logo-dot"></span> Admin</div>
-    <nav>
-      <a href="#" class="nav-item active" data-tab="profile">👤 Profile</a>
-      <a href="#" class="nav-item" data-tab="projects">🎨 Projects</a>
-      <a href="#" class="nav-item" data-tab="skills">⚡ Skills</a>
-      <a href="#" class="nav-item" data-tab="settings">⚙ Settings</a>
-    </nav>
-    <button class="btn btn-ghost" onclick="doLogout()">Logout</button>
-  </aside>
-
-  <main class="main-content">
-    <!-- PROFILE TAB -->
-    <div class="tab-content active" id="tab-profile">
-      <h2>Profile & About</h2>
-      <div class="form-group">
-        <label>Profile Photo</label>
-        <div class="upload-box">
-          <img id="previewPhoto" src="" alt="preview"/>
-          <input type="file" id="photoUpload" accept="image/*" onchange="handlePhotoUpload(event)"/>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>About Text</label>
-        <textarea id="aboutInput" rows="5"></textarea>
-      </div>
-      <button class="btn btn-primary" onclick="saveProfile()">💾 Save Profile</button>
-    </div>
-
-    <!-- PROJECTS TAB -->
-    <div class="tab-content" id="tab-projects">
-      <div class="tab-header">
-        <h2>Projects</h2>
-        <button class="btn btn-primary" onclick="openProjectModal()">+ New Project</button>
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>Image</th><th>Title</th><th>Category</th><th>Actions</th></tr>
-          </thead>
-          <tbody id="projectsTable"></tbody>
-        </table>
+<!-- HERO BENTO -->
+<section id="home" class="hero">
+  <div class="hero-grid">
+    <div class="bento bento-main">
+      <p class="tag">✦ Portfolio 2026</p>
+      <h1 class="hero-title">
+        Firstlyo <br/>
+        <span class="italic">Eilen</span> Rizqulloh
+      </h1>
+      <p class="hero-sub">Creative Developer & Digital Designer — crafting immersive experiences at the intersection of code and art.</p>
+      <div class="hero-cta">
+        <a href="#works" class="btn btn-primary">View Works →</a>
+        <a href="#contact" class="btn btn-ghost">Let's Talk</a>
       </div>
     </div>
 
-    <!-- SKILLS TAB -->
-    <div class="tab-content" id="tab-skills">
-      <div class="tab-header">
-        <h2>Skills</h2>
-        <button class="btn btn-primary" onclick="openSkillModal()">+ New Skill</button>
+    <div class="bento bento-photo">
+      <div class="photo-frame" id="profilePhoto">
+        <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600" alt="Profile" id="profileImg"/>
       </div>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>Icon</th><th>Name</th><th>Level</th><th>Actions</th></tr>
-          </thead>
-          <tbody id="skillsTable"></tbody>
-        </table>
+      <div class="photo-info">
+        <span class="status-dot"></span> Available for work
       </div>
     </div>
 
-    <!-- SETTINGS TAB -->
-    <div class="tab-content" id="tab-settings">
-      <h2>Settings</h2>
-      <div class="form-group">
-        <label>Change Admin Password</label>
-        <input type="password" id="newPass" placeholder="New password"/>
+    <div class="bento bento-stats">
+      <div class="stat">
+        <span class="stat-num">50+</span>
+        <span class="stat-label">Projects</span>
       </div>
-      <button class="btn btn-primary" onclick="changePassword()">🔐 Update Password</button>
-      <hr/>
-      <button class="btn btn-ghost" onclick="resetAll()">⚠ Reset All Data</button>
+      <div class="stat">
+        <span class="stat-num">5y</span>
+        <span class="stat-label">Experience</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">30+</span>
+        <span class="stat-label">Clients</span>
+      </div>
     </div>
-  </main>
-</div>
 
-<!-- MODAL PROJECT -->
-<div id="projectModal" class="modal">
-  <div class="modal-card">
-    <div class="modal-head">
-      <h3 id="projectModalTitle">New Project</h3>
-      <button onclick="closeProjectModal()">✕</button>
-    </div>
-    <input type="hidden" id="projectId"/>
-    <div class="form-group">
-      <label>Project Image</label>
-      <div class="upload-box">
-        <img id="projectPreview" src="" alt="preview"/>
-        <input type="file" id="projectImage" accept="image/*" onchange="previewProjectImage(event)"/>
+    <div class="bento bento-marquee">
+      <div class="marquee">
+        <span>DESIGN ✦ CODE ✦ CREATE ✦ INNOVATE ✦ DESIGN ✦ CODE ✦ CREATE ✦ INNOVATE ✦</span>
       </div>
     </div>
-    <div class="form-group">
-      <label>Title</label>
-      <input type="text" id="projectTitle" placeholder="Project name"/>
+
+    <div class="bento bento-location">
+      <p class="mini-label">📍 Based in</p>
+      <p class="big-text">Indonesia</p>
+      <p class="mini-label">🕐 <span id="clock">--:--</span> WIB</p>
     </div>
-    <div class="form-group">
-      <label>Category</label>
-      <input type="text" id="projectCategory" placeholder="Web Design, App, Branding..."/>
-    </div>
-    <div class="form-group">
-      <label>Description</label>
-      <textarea id="projectDesc" rows="3"></textarea>
-    </div>
-    <div class="form-group">
-      <label>Link (optional)</label>
-      <input type="text" id="projectLink" placeholder="https://..."/>
-    </div>
-    <button class="btn btn-primary" onclick="saveProject()">💾 Save</button>
   </div>
-</div>
+</section>
 
-<!-- MODAL SKILL -->
-<div id="skillModal" class="modal">
-  <div class="modal-card">
-    <div class="modal-head">
-      <h3 id="skillModalTitle">New Skill</h3>
-      <button onclick="closeSkillModal()">✕</button>
-    </div>
-    <input type="hidden" id="skillId"/>
-    <div class="form-group">
-      <label>Icon (emoji)</label>
-      <input type="text" id="skillIcon" placeholder="🎨" maxlength="2"/>
-    </div>
-    <div class="form-group">
-      <label>Name</label>
-      <input type="text" id="skillName" placeholder="UI/UX Design"/>
-    </div>
-    <div class="form-group">
-      <label>Level (%)</label>
-      <input type="number" id="skillLevel" min="0" max="100" placeholder="90"/>
-    </div>
-    <button class="btn btn-primary" onclick="saveSkill()">💾 Save</button>
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="section-head">
+    <span class="section-tag">01 — About</span>
+    <h2 class="section-title">A little <span class="italic">about</span> me</h2>
   </div>
-</div>
+  <div class="about-grid">
+    <div class="about-card">
+      <p id="aboutText">I'm Firstlyo Eilen Rizqulloh — a creative developer passionate about building beautiful, functional, and meaningful digital products. I blend design thinking with technical expertise to craft experiences that leave a lasting impression.</p>
+    </div>
+    <div class="about-card">
+      <h3>Philosophy</h3>
+      <p>"Design is not just what it looks like. Design is how it works — and how it makes you feel."</p>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section id="works" class="section">
+  <div class="section-head">
+    <span class="section-tag">02 — Selected Works</span>
+    <h2 class="section-title">Featured <span class="italic">projects</span></h2>
+  </div>
+  <div class="works-grid" id="worksGrid">
+    <!-- Projects akan di-render oleh JS -->
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section">
+  <div class="section-head">
+    <span class="section-tag">03 — Expertise</span>
+    <h2 class="section-title">Tools & <span class="italic">skills</span></h2>
+  </div>
+  <div class="skills-grid" id="skillsGrid"></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="contact-card">
+    <span class="section-tag">04 — Let's connect</span>
+    <h2 class="contact-title">Got a project in mind? <br/><span class="italic">Let's build it together.</span></h2>
+    <a href="mailto:firstlyo@example.com" class="btn btn-primary btn-lg">firstlyo@example.com →</a>
+    <div class="socials">
+      <a href="#">Instagram</a>
+      <a href="#">GitHub</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Dribbble</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Firstlyo Eilen Rizqulloh — Crafted with ♥</p>
+</footer>
 
 <script src="app.js"></script>
 </body>
-  </html>
+  </html>        
